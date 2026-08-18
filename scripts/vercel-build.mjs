@@ -10,7 +10,13 @@ function run(command, args) {
 run('npx', ['prisma', 'generate'])
 
 if (process.env.DATABASE_URL && process.env.AUTO_SYNC_DATABASE !== 'false') {
-  run('npx', ['prisma', 'migrate', 'deploy'])
+  try {
+    run('npx', ['prisma', 'migrate', 'deploy'])
+  } catch (error) {
+    console.warn('\nPrisma migrate deploy failed; trying db push for the configured database.')
+    run('npx', ['prisma', 'db', 'push', '--skip-generate'])
+  }
+
   if (process.env.SEED_DEMO_DATA === 'true') {
     run('node', ['scripts/seed-demo.mjs'])
   } else {
