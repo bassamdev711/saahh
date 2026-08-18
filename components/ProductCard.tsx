@@ -1,11 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingBag } from 'lucide-react';
 import FavoriteButton from './FavoriteButton';
 import { useCart } from './CartProvider';
 import { useToast } from './ToastProvider';
-import { getImageSizes } from '@/lib/image-utils';
 
 interface ProductCardProps {
   product: {
@@ -42,7 +40,7 @@ export default function ProductCard({ product, currency, priority = false }: Pro
         <FavoriteButton product={product} className="z-20 m-4 md:m-6" />
         <Link href={`/products/${product.slug}`} className="absolute inset-0 z-10" />
         {product.imageUrl ? (
-          <Image src={product.imageUrl} alt={product.name} fill sizes={getImageSizes('card')} priority={priority} loading={priority ? undefined : 'lazy'} className="object-contain p-8 transition-transform duration-700 ease-out z-0 group-hover:scale-105" />
+          <img src={product.imageUrl} alt={product.name} loading={priority ? 'eager' : 'lazy'} className="absolute inset-0 w-full h-full object-contain p-8 transition-transform duration-700 ease-out z-0 group-hover:scale-105" />
         ) : (
           <div className="relative w-28 h-28 rounded-full watch-dial z-0"><span className="absolute inset-4 rounded-full border border-accent/30" /><span className="watch-hand h-[2px] w-[34%] rotate-[28deg]" /></div>
         )}
