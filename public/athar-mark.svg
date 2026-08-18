@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">ATHAR mark</title>
+  <desc id="desc">A monogram A inside a brass watch bezel</desc>
+  <rect width="512" height="512" rx="112" fill="#111517"/>
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#b99a63" stroke-width="3"/>
+  <circle cx="256" cy="256" r="166" fill="none" stroke="#b99a63" stroke-opacity=".28" stroke-width="2"/>
+  <path d="M256 104L176 356h38l18-60h48l18 60h38L256 104Zm0 70 16 84h-32l16-84Z" fill="#ead8ae"/>
+  <path d="M256 84v20M256 408v20M84 256h20M408 256h20" stroke="#b99a63" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="8" fill="#b99a63"/>
+</svg>

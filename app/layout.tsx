@@ -13,29 +13,44 @@ const tajawal = Tajawal({
 
 export async function generateMetadata(): Promise<Metadata> {
   const store = await getStoreConfig()
-  const title = store.nameLatin && store.name !== store.nameLatin
-    ? `${store.name} | ${store.nameLatin}`
-    : store.name
+  const brandTitle = `${store.name} | ${store.nameLatin || 'ATHAR'} — دار الساعات المعاصرة`
+  const brandDescription = store.description || 'أثر — دار ساعات معاصرة تصنع قطعًا تحفظ اللحظات وتمنح الوقت شكلًا يستحق أن يُرى.'
+  const socialImage = store.ogImageUrl || '/athar-og.svg'
+  const brandIcon = store.faviconUrl || '/athar-mark.svg'
 
   return {
     metadataBase: getSiteUrl(store.storeUrl),
-    title,
-    description: store.description,
+    title: {
+      default: brandTitle,
+      template: `%s — ${store.nameLatin || 'ATHAR'}`,
+    },
+    description: brandDescription,
+    applicationName: 'ATHAR — أثر',
+    generator: 'ATHAR Studio',
+    creator: 'ATHAR',
+    publisher: 'ATHAR',
+    keywords: ['ATHAR', 'أثر', 'ساعات فاخرة', 'ساعات معاصرة', 'ساعات أوتوماتيك', 'دار ساعات'],
+    alternates: { canonical: '/' },
+    themeColor: '#111517',
+    manifest: '/manifest.webmanifest',
     openGraph: {
-      title,
-      description: store.description,
-      ...(store.ogImageUrl ? { images: [{ url: store.ogImageUrl, width: 1200, height: 630 }] } : {}),
+      type: 'website',
+      locale: 'ar_SA',
+      siteName: 'ATHAR — أثر',
+      title: brandTitle,
+      description: brandDescription,
+      images: [{ url: socialImage, width: 1200, height: 630, alt: 'ATHAR — أثر، دار الساعات المعاصرة' }],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description: store.description,
-      ...(store.ogImageUrl ? { images: [store.ogImageUrl] } : {}),
+      title: brandTitle,
+      description: brandDescription,
+      images: [socialImage],
     },
     icons: {
-      icon: store.faviconUrl ?? '/favicon.ico',
-      shortcut: store.faviconUrl ?? '/favicon.ico',
-      apple: store.faviconUrl ?? '/favicon.ico',
+      icon: [{ url: brandIcon, type: 'image/svg+xml' }],
+      shortcut: brandIcon,
+      apple: [{ url: brandIcon, type: 'image/svg+xml' }],
     },
   }
 }

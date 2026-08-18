@@ -1,0 +1,19 @@
+{
+  "name": "ATHAR — أثر",
+  "short_name": "ATHAR",
+  "description": "دار ساعات معاصرة تصنع قطعًا تحفظ اللحظات.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111517",
+  "theme_color": "#111517",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "/athar-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -87,10 +87,10 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
 })
 
 export function getSiteUrl(storeUrl?: string | null): URL {
-  const candidate = storeUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://example-store.vercel.app'
+  const candidate = storeUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://athar.example'
   try {
     return new URL(candidate)
   } catch {
-    return new URL('https://example-store.vercel.app')
+    return new URL('https://athar.example')
   }
 }
