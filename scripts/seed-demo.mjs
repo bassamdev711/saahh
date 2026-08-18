@@ -43,11 +43,6 @@ const sizes = ['36 MM', '38 MM', '40 MM', '41 MM', '42 MM']
 const genders = ['للجنسين', 'رجالي', 'للجنسين', 'نسائي']
 const materials = ['316L Stainless Steel', 'Brushed Steel', 'Polished Steel', 'Titanium Grade 2', 'Black PVD Steel']
 const movements = ['Automatic', 'Automatic', 'Quartz Swiss', 'Automatic', 'Manual Wind']
-const legacyDemoSlugs = [
-  'summer-perfumes', 'winter-perfumes', 'french-perfumes', 'oud-oil', 'musk-amber',
-  'niche-perfumes', 'gift-sets', 'hair-mists', 'home-fragrances', 'limited-editions',
-]
-
 function imageUrl(index) {
   return watchImages[index % watchImages.length]
 }
@@ -89,23 +84,6 @@ function productData(category, categoryIndex, productIndex, collectionId) {
   }
 }
 
-async function removeLegacyDemoData() {
-  if (process.env.CLEAN_LEGACY_DEMO !== 'true') return
-
-  const legacyCollections = await prisma.collection.findMany({
-    where: { slug: { in: legacyDemoSlugs } },
-    select: { id: true },
-  })
-  const legacyIds = legacyCollections.map((item) => item.id)
-
-  if (legacyIds.length) {
-    await prisma.product.updateMany({ where: { collectionId: { in: legacyIds } }, data: { collectionId: null } })
-    await prisma.product.deleteMany({ where: { collectionId: null, slug: { contains: '-product-' } } })
-    await prisma.collection.deleteMany({ where: { id: { in: legacyIds } } })
-    console.log(`Removed ${legacyIds.length} legacy demo collections.`)
-  }
-}
-
 async function main() {
   console.log('Seeding ORVÉN demo catalog: 10 categories × 10 watches = 100 products')
 
@@ -124,8 +102,6 @@ async function main() {
       seoSearchPhrases: ['ORVÉN', 'أورڤِن', 'ساعات فاخرة', 'ساعات أوتوماتيك'],
     },
   })
-
-  await removeLegacyDemoData()
 
   let productCount = 0
   for (let categoryIndex = 0; categoryIndex < categories.length; categoryIndex += 1) {
