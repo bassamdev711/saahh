@@ -104,14 +104,28 @@ export default async function ProductDetailPage({
         <div className="max-w-5xl mx-auto">
           <ProductDetailClient
             product={{
-              ...product,
+              id: product.id,
+              name: product.name,
+              slug: product.slug,
+              brand: product.brand,
+              description: product.description,
               price: Number(product.price),
               compareAtPrice: product.compareAtPrice ? Number(product.compareAtPrice) : null,
-              variants: product.variants.map(v => ({
-                ...v,
-                price: Number(v.price),
-                compareAtPrice: v.compareAtPrice ? Number(v.compareAtPrice) : null,
-              }))
+              size: product.size,
+              gender: product.gender,
+              category: product.category,
+              imageUrl: product.imageUrl,
+              images: Array.isArray(product.images) ? product.images : [],
+              featured: product.featured,
+              bestseller: product.bestseller,
+              stock: product.stock,
+              variants: product.variants.map((variant) => ({
+                id: variant.id,
+                size: variant.size,
+                price: Number(variant.price),
+                compareAtPrice: variant.compareAtPrice ? Number(variant.compareAtPrice) : null,
+                stock: variant.stock,
+              })),
             }}
           />
         </div>
