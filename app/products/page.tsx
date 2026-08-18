@@ -150,7 +150,7 @@ export default async function ProductsPage({
               const number = String(collectionIndex.get(collection.slug) || 0).padStart(2, '0')
               const active = collectionSlug === collection.slug
               return (
-                <Link key={collection.slug} href={`/products?collection=${collection.slug}`} className={`group relative min-h-[150px] overflow-hidden border p-4 transition-all duration-500 md:min-h-[190px] ${active ? 'border-accent' : 'border-surface/15 hover:border-accent/70'}`}>
+                <Link key={collection.slug} href={`/collections/${collection.slug}`} className={`group relative min-h-[150px] overflow-hidden border p-4 transition-all duration-500 md:min-h-[190px] ${active ? 'border-accent' : 'border-surface/15 hover:border-accent/70'}`}>
                   {collection.imageUrl ? <img src={collection.imageUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-50 group-hover:grayscale-0" /> : null}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand via-brand/50 to-transparent" />
                   <span className="relative z-10 font-mono text-[9px] tracking-widest text-accent">{number}</span>
