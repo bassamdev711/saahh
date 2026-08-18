@@ -85,32 +85,32 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 z-[100] backdrop-blur-sm"
+            className="fixed inset-0 z-[100] bg-[#07090a]/75 backdrop-blur-md"
           />
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-0 left-0 right-0 z-[101] bg-surface shadow-2xl rounded-b-3xl overflow-hidden"
+            className="fixed left-0 right-0 top-0 z-[101] overflow-hidden rounded-b-3xl border-b-2 border-accent/60 bg-[#f4f1ea] text-foreground shadow-[0_24px_70px_rgba(0,0,0,0.38)]"
             dir="rtl"
           >
             <div className="max-w-4xl mx-auto p-3 md:p-8">
               <form onSubmit={handleSearchSubmit} className="relative flex items-center mb-4 md:mb-8">
-                <Search className="absolute right-4 text-foreground/50 w-6 h-6" />
+                <Search className="absolute right-4 h-6 w-6 text-brand md:right-5" strokeWidth={2} />
                 <input
                   ref={inputRef}
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="ابحث عن ساعة، خامة، مقاس، أو إصدار..."
-                  className="w-full bg-white border-2 border-brand/20 rounded-full py-3 md:py-4 pr-12 md:pr-14 pl-12 md:pl-14 text-base md:text-lg text-foreground focus:outline-none focus:border-brand transition-colors"
+                  className="w-full border-2 border-brand/70 bg-[#fffdf8] py-3 pl-12 pr-12 text-base font-medium text-foreground shadow-[0_8px_24px_rgba(17,20,23,0.08)] outline-none placeholder:text-foreground/55 focus:border-accent focus:ring-2 focus:ring-accent/25 md:py-4 md:pl-14 md:pr-14 md:text-lg"
                 />
                 <button
                   type="button"
                   onClick={onClose}
-                  className="absolute left-4 p-2 bg-black/5 hover:bg-black/10 rounded-full transition-colors"
+                  className="absolute left-3 rounded-full border border-brand/15 bg-brand/10 p-2 transition-colors hover:bg-accent/20 md:left-4"
                 >
-                  <X className="w-5 h-5 text-foreground" />
+                  <X className="h-5 w-5 text-brand" strokeWidth={2} />
                 </button>
               </form>
 
@@ -122,16 +122,16 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   </div>
                 ) : query && results.length > 0 ? (
                   <div>
-                    <h3 className="text-sm font-bold text-foreground/50 mb-4 px-2">النتائج السريعة</h3>
+                    <h3 className="mb-4 px-2 text-sm font-bold text-brand">النتائج السريعة</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {results.map((product) => (
                         <Link
                           key={product.id}
                           href={`/products/${product.slug}`}
                           onClick={onClose}
-                          className="flex items-center gap-3 p-2 md:p-3 rounded-xl hover:bg-white transition-colors border border-transparent hover:border-black/5 group"
+                          className="group flex items-center gap-3 rounded-xl border border-black/10 bg-[#ebe7de] p-2 transition-colors hover:border-accent/60 hover:bg-white md:p-3"
                         >
-                          <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg border border-black/5 flex items-center justify-center relative overflow-hidden shrink-0">
+                          <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-brand/15 bg-white md:h-16 md:w-16">
                             {product.imageUrl ? (
                               <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                             ) : (
@@ -139,17 +139,17 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             )}
                           </div>
                           <div className="flex-grow">
-                            <h4 className="font-bold text-foreground text-sm line-clamp-1">{product.name}</h4>
+                            <h4 className="line-clamp-1 text-sm font-bold text-foreground">{product.name}</h4>
                             <div className="flex items-center gap-2 mt-1">
-                              <span className="text-brand font-bold text-sm">{Number(product.price).toLocaleString('ar-SA')} {currency}</span>
+                              <span className="text-sm font-bold text-brand">{Number(product.price).toLocaleString('ar-SA')} {currency}</span>
                               {product.compareAtPrice && (
-                                <span className="text-foreground/40 line-through text-xs">
+                                <span className="text-xs text-foreground/50 line-through">
                                   {Number(product.compareAtPrice).toLocaleString('ar-SA')} {currency}
                                 </span>
                               )}
                             </div>
                           </div>
-                          <ArrowLeft className="w-4 h-4 text-foreground/20 group-hover:text-brand transition-colors shrink-0" />
+                          <ArrowLeft className="h-4 w-4 shrink-0 text-brand/60 transition-colors group-hover:text-brand" />
                         </Link>
                       ))}
                     </div>
@@ -163,13 +163,13 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   </div>
                 ) : query && results.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-40 text-center px-4">
-                    <p className="text-lg font-bold text-foreground mb-2">لم نجد نتائج مطابقة لـ &quot;{query}&quot;</p>
-                    <p className="text-sm text-foreground/60">جرّب اسم خامة، مقاس، أو تصفح مجموعات الساعات.</p>
+                    <p className="mb-2 text-lg font-bold text-foreground">لم نجد نتائج مطابقة لـ &quot;{query}&quot;</p>
+                    <p className="text-sm text-foreground/75">جرّب اسم خامة، مقاس، أو تصفح مجموعات الساعات.</p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-2 opacity-60">
+                  <div className="grid grid-cols-1 gap-8 px-2 sm:grid-cols-2">
                     <div>
-                      <h3 className="text-sm font-bold text-foreground/70 mb-4 flex items-center gap-2">
+                      <h3 className="mb-4 flex items-center gap-2 text-sm font-bold text-brand">
                         <Search className="w-4 h-4" />
                         عمليات بحث شائعة
                       </h3>
@@ -178,7 +178,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           <button 
                             key={term}
                             onClick={() => setQuery(term)}
-                            className="px-4 py-2 bg-white rounded-full text-sm font-medium hover:bg-brand hover:text-white transition-colors border border-black/5"
+                            className="rounded-full border border-brand/20 bg-[#e8e2d7] px-4 py-2 text-sm font-bold text-brand transition-colors hover:border-brand hover:bg-brand hover:text-white"
                           >
                             {term}
                           </button>

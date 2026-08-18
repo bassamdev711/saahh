@@ -70,10 +70,10 @@ export default function Navbar({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       style={{ top: topOffset }}
-      className={`fixed w-full z-50 transition-all duration-500 ${
+      className={`fixed w-full z-50 border-b border-accent/25 backdrop-blur-xl transition-all duration-500 shadow-[0_8px_30px_rgba(0,0,0,0.28)] ${
         isScrolled
-          ? "bg-brand/95 backdrop-blur-md py-1.5 md:py-2 shadow-md"
-          : "bg-brand py-2.5 md:py-4"
+          ? "bg-[#0d1113]/[.98] py-1.5 md:py-2"
+              : "bg-[#111417]/[.97] py-3 md:py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
@@ -118,7 +118,7 @@ export default function Navbar({
             <Heart className="w-[18px] h-[18px] md:w-5 md:h-5" strokeWidth={1.5} />
           </Link>
           <button 
-            className="text-accent hover:text-surface transition-colors" 
+            className="rounded-full p-2 text-accent transition-colors hover:bg-accent/10 hover:text-surface" 
             aria-label="البحث"
             onClick={() => setIsSearchOpen(true)}
           >
@@ -151,7 +151,7 @@ export default function Navbar({
           
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-accent hover:text-surface transition-colors"
+            className="rounded-full p-2 text-accent transition-colors hover:bg-accent/10 hover:text-surface md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
             aria-expanded={isMobileMenuOpen}
