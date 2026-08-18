@@ -101,7 +101,7 @@ export default function FavoritesClient() {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-accent/20 text-6xl z-0">
-                      ATHAR / TIMEPIECE
+                      ORVÉN / TIMEPIECE
                     </div>
                   )}
                 </div>

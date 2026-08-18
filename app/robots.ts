@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const DEFAULT_SITE_URL = 'https://athar.example'
+const DEFAULT_SITE_URL = 'https://orven.example'
 
 function getBaseUrl(): string {
   try {

@@ -11,7 +11,7 @@ type AboutData = {
 
 export default function About({
   data = {},
-  brandName = 'أثر',
+  brandName = 'أورڤِن',
 }: {
   data?: AboutData
   brandName?: string
@@ -45,7 +45,7 @@ export default function About({
               <div className="relative w-40 h-52 border border-accent/30 p-3">
                 <div className="absolute inset-5 border border-accent/20" />
                 <div className="absolute inset-0 flex items-center justify-center"><div className="watch-dial w-24 h-24 rounded-full" /></div>
-                <span className="absolute bottom-3 left-0 right-0 text-center font-mono text-[8px] text-accent tracking-[0.3em]">ATHAR / 26</span>
+                <span className="absolute bottom-3 left-0 right-0 text-center font-mono text-[8px] text-accent tracking-[0.3em]">ORVÉN / 26</span>
               </div>
             </div>
           </div>

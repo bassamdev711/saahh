@@ -17,8 +17,8 @@ const XIcon = (props: React.SVGProps<SVGSVGElement> & { size?: number }) => (
 );
 
 export default async function Footer({
-  storeName = 'أثر',
-  storeNameLatin = 'ATHAR',
+  storeName = 'أورڤِن',
+  storeNameLatin = 'ORVÉN',
 }: {
   storeName?: string
   storeNameLatin?: string
@@ -90,7 +90,7 @@ export default async function Footer({
               <span className="text-2xl font-light text-surface ml-2 tracking-[0.2em]">{storeName}</span>
             </Link>
             <p className="text-sm leading-relaxed text-surface/80 mb-6">
-              نصنع في أثر ساعاتٍ تحفظ اللحظة، وتترك حضورًا لا يبهت مع مرور الوقت.
+              في أورڤِن نصنع ساعاتٍ تحفظ اللحظة، وتترك حضورًا لا يبهت مع مرور الوقت.
             </p>
             <div className="flex gap-4">
               {showInstagram && (

@@ -13,33 +13,33 @@ const tajawal = Tajawal({
 
 export async function generateMetadata(): Promise<Metadata> {
   const store = await getStoreConfig()
-  const brandTitle = `${store.name} | ${store.nameLatin || 'ATHAR'} — دار الساعات المعاصرة`
-  const brandDescription = store.description || 'أثر — دار ساعات معاصرة تصنع قطعًا تحفظ اللحظات وتمنح الوقت شكلًا يستحق أن يُرى.'
-  const socialImage = store.ogImageUrl || '/athar-og.svg'
-  const brandIcon = store.faviconUrl || '/athar-mark.svg'
+  const brandTitle = `${store.name} | ${store.nameLatin || 'ORVÉN'} — دار الساعات المعاصرة`
+  const brandDescription = store.description || 'أورڤِن — دار ساعات معاصرة تصنع قطعًا نادرة، تجمع بين دقة الحركة وهدوء الحضور.'
+  const socialImage = store.ogImageUrl || '/orven-og.svg'
+  const brandIcon = store.faviconUrl || '/orven-mark.svg'
 
   return {
     metadataBase: getSiteUrl(store.storeUrl),
     title: {
       default: brandTitle,
-      template: `%s — ${store.nameLatin || 'ATHAR'}`,
+      template: `%s — ${store.nameLatin || 'ORVÉN'}`,
     },
     description: brandDescription,
-    applicationName: 'ATHAR — أثر',
-    generator: 'ATHAR Studio',
-    creator: 'ATHAR',
-    publisher: 'ATHAR',
-    keywords: ['ATHAR', 'أثر', 'ساعات فاخرة', 'ساعات معاصرة', 'ساعات أوتوماتيك', 'دار ساعات'],
+    applicationName: 'ORVÉN — أورڤِن',
+    generator: 'ORVÉN Atelier',
+    creator: 'ORVÉN',
+    publisher: 'ORVÉN',
+    keywords: ['ORVÉN', 'أورڤِن', 'ساعات فاخرة', 'ساعات معاصرة', 'ساعات أوتوماتيك', 'دار ساعات'],
     alternates: { canonical: '/' },
     themeColor: '#111517',
     manifest: '/manifest.webmanifest',
     openGraph: {
       type: 'website',
       locale: 'ar_SA',
-      siteName: 'ATHAR — أثر',
+      siteName: 'ORVÉN — أورڤِن',
       title: brandTitle,
       description: brandDescription,
-      images: [{ url: socialImage, width: 1200, height: 630, alt: 'ATHAR — أثر، دار الساعات المعاصرة' }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: 'ORVÉN — أورڤِن، دار الساعات المعاصرة' }],
     },
     twitter: {
       card: 'summary_large_image',

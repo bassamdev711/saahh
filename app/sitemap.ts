@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import prisma from '@/lib/prisma'
 
-const DEFAULT_SITE_URL = 'https://athar.example'
+const DEFAULT_SITE_URL = 'https://orven.example'
 
 type SitemapRecord = { slug: string; updatedAt: Date }
 

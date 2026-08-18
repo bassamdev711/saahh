@@ -1,7 +1,7 @@
 {
-  "name": "ATHAR — أثر",
-  "short_name": "ATHAR",
-  "description": "دار ساعات معاصرة تصنع قطعًا تحفظ اللحظات.",
+  "name": "ORVÉN — أورڤِن",
+  "short_name": "ORVÉN",
+  "description": "دار ساعات معاصرة تصنع قطعًا نادرة، تجمع بين دقة الحركة وهدوء الحضور.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#111517",
@@ -10,7 +10,7 @@
   "lang": "ar",
   "icons": [
     {
-      "src": "/athar-mark.svg",
+      "src": "/orven-mark.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

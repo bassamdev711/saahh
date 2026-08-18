@@ -9,8 +9,8 @@ import SearchModal from "./SearchModal";
 import { useCartAnimation } from "./CartAnimationProvider";
 
 export default function Navbar({
-  storeName = 'أثر',
-  storeNameLatin = 'ATHAR',
+  storeName = 'أورڤِن',
+  storeNameLatin = 'ORVÉN',
 }: {
   storeName?: string
   storeNameLatin?: string

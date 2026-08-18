@@ -15,10 +15,10 @@ export type StoreConfig = {
 }
 
 export const DEFAULT_STORE_CONFIG: StoreConfig = {
-  name: 'أثر',
-  nameLatin: 'ATHAR',
-  tagline: 'أثرٌ يتركه الوقت.',
-  description: 'دار ساعات معاصرة تصنع قطعًا تحفظ اللحظات، وتمنح الوقت شكلًا يستحق أن يُرى.',
+  name: 'أورڤِن',
+  nameLatin: 'ORVÉN',
+  tagline: 'الوقت، بصيغة أندر.',
+  description: 'دار ساعات معاصرة تصنع قطعًا نادرة، تجمع بين دقة الحركة وهدوء الحضور.',
   logoUrl: null,
   faviconUrl: null,
   ogImageUrl: null,
@@ -44,7 +44,7 @@ function normalizeStoreConfig(settings: StoreSettingsRecord | null | undefined):
   const legacyIdentity = [settings?.storeName, settings?.storeNameLatin, settings?.storeTagline, settings?.storeDescription]
     .filter(Boolean)
     .join(' ')
-    .match(/your store|متجرك|طيف|ساهه|SAHHH|عطر|عطور|perfume|fragrance/i)
+    .match(/your store|متجرك|طيف|ساهه|SAHHH|أثر|ATHAR|عطر|عطور|perfume|fragrance/i)
   const useWatchIdentity = Boolean(legacyIdentity)
 
   return {
@@ -87,10 +87,10 @@ export const getStoreConfig = cache(async (): Promise<StoreConfig> => {
 })
 
 export function getSiteUrl(storeUrl?: string | null): URL {
-  const candidate = storeUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://athar.example'
+  const candidate = storeUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://orven.example'
   try {
     return new URL(candidate)
   } catch {
-    return new URL('https://athar.example')
+    return new URL('https://orven.example')
   }
 }

@@ -35,7 +35,7 @@ export default function ProductCard({ product, currency, priority = false }: Pro
 
   return (
     <div className="relative bg-[#e9e5dc] cursor-pointer group shadow-sm hover:shadow-[0_26px_60px_rgba(17,20,23,.16)] transition-all duration-700 border border-foreground/10 rounded-none flex flex-col overflow-hidden h-auto md:h-[520px]">
-      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3 text-[8px] font-mono tracking-[0.22em] text-foreground/45 uppercase pointer-events-none"><span>OBJECT / ATHAR</span><span>01—12</span></div>
+      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3 text-[8px] font-mono tracking-[0.22em] text-foreground/45 uppercase pointer-events-none"><span>OBJECT / ORVÉN</span><span>01—12</span></div>
       <div className="relative w-full h-[210px] md:h-[62%] bg-[radial-gradient(circle_at_50%_42%,#ffffff,#d9d5ca)] transition-colors duration-700 group-hover:bg-[#ded9cc] flex items-center justify-center">
         <div className="absolute inset-4 border border-accent/20 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 w-44 h-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10 transition-transform duration-700 group-hover:scale-125" />

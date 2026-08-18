@@ -14,7 +14,7 @@ type ExperienceData = {
 
 export default function Experience({
   data = {},
-  brandName = 'أثر',
+  brandName = 'أورڤِن',
 }: {
   data?: ExperienceData
   brandName?: string

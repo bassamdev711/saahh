@@ -77,7 +77,7 @@ export default async function Home() {
       {/* 6. Handpicked / Featured */}
       <ProductsServer 
         type="featured" 
-        title="أثرٌ شخصي"
+        title="توقيع أورڤِن"
         subtitle={`الفصل الثالث / مختارات ${store.name}`}
       />
       

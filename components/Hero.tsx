@@ -23,7 +23,7 @@ function ExhibitionWatch({ compact = false }: { compact?: boolean }) {
         <div className="absolute inset-[8%] rounded-full border border-white/15" />
         <div className="absolute inset-[15%] rounded-full border border-accent/25" />
         <div className="absolute inset-[22%] rounded-full border border-white/10" />
-        <span className="absolute top-[19%] left-1/2 -translate-x-1/2 text-[9px] font-mono tracking-[0.5em] text-[#ead8ae]">ATHAR</span>
+        <span className="absolute top-[19%] left-1/2 -translate-x-1/2 text-[9px] font-mono tracking-[0.5em] text-[#ead8ae]">ORVÉN</span>
         <span className="absolute bottom-[21%] left-1/2 -translate-x-1/2 text-[7px] font-mono tracking-[0.3em] text-white/50">OBJECT 001</span>
         <span className="watch-hand h-[3px] w-[31%] rotate-[16deg]" />
         <span className="watch-hand h-[2px] w-[42%] rotate-[139deg] bg-accent" />
@@ -40,8 +40,8 @@ function Spec({ label, value }: { label: string; value: string }) {
 
 export default function Hero({
   data = {},
-  brandName = 'أثر',
-  brandNameLatin = 'ATHAR',
+  brandName = 'أورڤِن',
+  brandNameLatin = 'ORVÉN',
 }: {
   data?: HeroData
   brandName?: string
@@ -67,7 +67,7 @@ export default function Hero({
         </div>
 
         <div className="relative flex flex-col items-center justify-center text-center">
-          <span className="absolute top-0 font-display text-[13rem] leading-none text-surface/[.035] select-none">{brandNameLatin || 'ATHAR'}</span>
+          <span className="absolute top-0 font-display text-[13rem] leading-none text-surface/[.035] select-none">{brandNameLatin || 'ORVÉN'}</span>
           <span className="absolute top-[18%] left-1/2 -translate-x-1/2 text-[10px] font-mono tracking-[0.55em] text-accent">THE FIRST TRACE</span>
           <div className="float-soft"><ExhibitionWatch /></div>
           <div className="absolute bottom-[12%] flex flex-col items-center gap-3">
@@ -79,7 +79,7 @@ export default function Hero({
         <div className="flex flex-col justify-center pr-6" dir="rtl">
           <span className="text-[10px] font-mono tracking-[0.42em] text-accent uppercase mb-8">دار الساعات المعاصرة</span>
           <h1 className="font-display text-[6.2rem] xl:text-[7.3rem] leading-[.86] tracking-[-.04em] text-surface mb-7">{data.heroTitle || brandName}</h1>
-          <p className="text-2xl xl:text-3xl font-light text-accent leading-tight mb-7">{data.heroSubtitle || "أثرٌ يتركه الوقت."}</p>
+          <p className="text-2xl xl:text-3xl font-light text-accent leading-tight mb-7">{data.heroSubtitle || "الوقت، بصيغة أندر."}</p>
           <p className="text-sm leading-loose text-surface/60 max-w-sm mb-10 whitespace-pre-line">{data.heroDescription || "ليست ساعةً تقيس الزمن،\nبل قطعةٌ تحفظ ما لا نريد نسيانه."}</p>
           <div className="flex gap-3"><CtaLink href="#products" primary>{data.heroPrimaryButton || "ادخل المعرض"}</CtaLink><CtaLink href="#about">{data.heroSecondaryButton || "اقرأ الحكاية"}</CtaLink></div>
           <div className="grid grid-cols-3 gap-5 border-t border-surface/15 mt-12 pt-5"><Spec label="Movement" value="Automatic" /><Spec label="Case" value="316L Steel" /><Spec label="Edition" value="No. 001" /></div>
@@ -87,8 +87,8 @@ export default function Hero({
       </div>
 
       <div className="flex lg:hidden flex-col min-h-[100dvh] relative z-10 px-6 pt-28 pb-10">
-        <div className="flex items-center justify-between text-[9px] font-mono tracking-[0.3em] text-accent" dir="ltr"><span>EXHIBITION / 001</span><span>ATHAR / 2026</span></div>
-        <div className="flex flex-col items-center text-center flex-1 justify-center"><span className="text-[9px] font-mono tracking-[0.35em] text-accent uppercase mb-6">دار الساعات المعاصرة</span><h1 className="font-display text-[4.8rem] leading-[.85] text-surface mb-5">{data.heroTitle || brandName}</h1><p className="text-xl text-accent mb-4">{data.heroSubtitle || "أثرٌ يتركه الوقت."}</p><p className="text-sm text-surface/65 leading-relaxed max-w-xs mb-7">{data.heroDescription || "ليست ساعةً تقيس الزمن، بل قطعةٌ تحفظ ما لا نريد نسيانه."}</p><div className="float-soft"><ExhibitionWatch compact /></div><div className="flex gap-2.5 w-full max-w-xs mt-7"><CtaLink href="#products" primary>{data.heroPrimaryButton || "ادخل المعرض"}</CtaLink><CtaLink href="#about">{data.heroSecondaryButton || "الحكاية"}</CtaLink></div></div>
+        <div className="flex items-center justify-between text-[9px] font-mono tracking-[0.3em] text-accent" dir="ltr"><span>EXHIBITION / 001</span><span>ORVÉN / 2026</span></div>
+        <div className="flex flex-col items-center text-center flex-1 justify-center"><span className="text-[9px] font-mono tracking-[0.35em] text-accent uppercase mb-6">دار الساعات المعاصرة</span><h1 className="font-display text-[4.8rem] leading-[.85] text-surface mb-5">{data.heroTitle || brandName}</h1><p className="text-xl text-accent mb-4">{data.heroSubtitle || "الوقت، بصيغة أندر."}</p><p className="text-sm text-surface/65 leading-relaxed max-w-xs mb-7">{data.heroDescription || "ليست ساعةً تقيس الزمن، بل قطعةٌ تحفظ ما لا نريد نسيانه."}</p><div className="float-soft"><ExhibitionWatch compact /></div><div className="flex gap-2.5 w-full max-w-xs mt-7"><CtaLink href="#products" primary>{data.heroPrimaryButton || "ادخل المعرض"}</CtaLink><CtaLink href="#about">{data.heroSecondaryButton || "الحكاية"}</CtaLink></div></div>
         <div className="grid grid-cols-3 gap-3 border-t border-surface/15 pt-4"><Spec label="Movement" value="Auto" /><Spec label="Case" value="316L" /><Spec label="Edition" value="001" /></div>
       </div>
     </section>
