@@ -371,7 +371,7 @@ export default function TrackOrderClient() {
                       {item.imageUrl ? (
                         <Image src={item.imageUrl} alt={item.productName} fill className="object-contain mix-blend-multiply" />
                       ) : (
-                        <span className="text-accent text-xs">متجرنا</span>
+                        <span className="text-accent text-[9px] font-mono tracking-widest">SAHHH</span>
                       )}
                     </div>
                     <div>

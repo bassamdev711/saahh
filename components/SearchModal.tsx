@@ -102,7 +102,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="ابحث عن منتج، تصنيف، أو كلمة مفتاحية..."
+                  placeholder="ابحث عن ساعة، خامة، مقاس، أو إصدار..."
                   className="w-full bg-white border-2 border-brand/20 rounded-full py-3 md:py-4 pr-12 md:pr-14 pl-12 md:pl-14 text-base md:text-lg text-foreground focus:outline-none focus:border-brand transition-colors"
                 />
                 <button
@@ -135,7 +135,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             {product.imageUrl ? (
                               <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                             ) : (
-                              <span className="text-accent">متجرنا</span>
+                              <span className="text-accent font-mono text-[9px] tracking-widest">SAHHH</span>
                             )}
                           </div>
                           <div className="flex-grow">
@@ -164,7 +164,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 ) : query && results.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-40 text-center px-4">
                     <p className="text-lg font-bold text-foreground mb-2">لم نجد نتائج مطابقة لـ &quot;{query}&quot;</p>
-                    <p className="text-sm text-foreground/60">حاول استخدام كلمات مختلفة أو تصفح مجموعاتنا.</p>
+                    <p className="text-sm text-foreground/60">جرّب اسم خامة، مقاس، أو تصفح مجموعات الساعات.</p>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-2 opacity-60">
@@ -174,7 +174,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         عمليات بحث شائعة
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {['الأكثر مبيعًا', 'وصل حديثًا', 'هدايا', 'عروض', 'منتجات مميزة'].map((term) => (
+                        {['ساعة أوتوماتيك', '316L ستيل', 'إصدارات محدودة', 'مقاس 40 MM', 'هدايا الوقت'].map((term) => (
                           <button 
                             key={term}
                             onClick={() => setQuery(term)}

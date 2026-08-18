@@ -10,8 +10,8 @@ import { getStoreConfig } from '@/lib/store-config'
 export async function generateMetadata(): Promise<Metadata> {
   const store = await getStoreConfig()
   return {
-    title: `المنتجات | ${store.name}`,
-    description: `اكتشف منتجات ${store.name}`,
+    title: `الساعات | ${store.name}`,
+    description: `اكتشف مختارات الساعات من ${store.name} — دقة، خامة، وحضور يدوم.`,
   }
 }
 

@@ -154,7 +154,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <Sparkles className="w-12 h-12 text-accent/20" />
+                    <div className="relative w-28 h-28 rounded-full watch-dial"><span className="absolute inset-4 rounded-full border border-accent/30" /></div>
                   </div>
                 )}
                 {hasDiscount && (
@@ -397,7 +397,7 @@ export default function ProductsClient({
             {subtitle || 'المجموعة الحصرية'}
           </span>
           <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 md:mb-6">
-            {title || 'اكتشف منتجاتنا'}
+            {title || 'اكتشف ساعاتنا'}
           </h2>
           <div className="w-12 md:w-16 h-[2px] bg-brand mx-auto mb-5 md:mb-8" />
           <Link
@@ -461,7 +461,7 @@ export default function ProductsClient({
                         className="object-contain p-8"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-accent/30 text-4xl">متجرنا</div>
+                      <div className="w-full h-full flex items-center justify-center text-accent/30 text-4xl font-mono tracking-widest">SAHHH</div>
                     )}
                   </div>
                   <div className="flex-1 flex flex-col items-center justify-center p-3 text-center bg-surface z-10 border-t border-black/10">
@@ -532,7 +532,7 @@ export default function ProductsClient({
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-accent/20 text-6xl group-hover:text-accent/40 transition-colors">
-                        متجرنا
+                        SAHHH / TIMEPIECE
                       </div>
                     )}
                     {product.compareAtPrice && (

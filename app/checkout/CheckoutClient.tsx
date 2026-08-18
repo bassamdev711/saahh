@@ -610,7 +610,7 @@ export default function CheckoutClient() {
                       {item.imageUrl ? (
                         <Image src={item.imageUrl} alt={item.name} fill className="object-cover mix-blend-multiply" />
                       ) : (
-                        <span className="text-accent">متجرنا</span>
+                        <span className="text-accent font-mono text-[9px] tracking-widest">SAHHH</span>
                       )}
                     </div>
                     <div className="flex-grow pt-1">

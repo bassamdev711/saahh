@@ -102,14 +102,14 @@ export default async function SearchPage({
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-accent text-2xl">متجرنا</span>
+                      <span className="text-accent text-2xl font-mono tracking-widest">SAHHH</span>
                     </div>
                   )}
                 </div>
                 
                 <div className="flex flex-col flex-grow">
                   <div className="text-xs text-accent font-bold tracking-widest mb-2 uppercase">
-                    {product.category || 'منتجات'}
+                    {product.category || 'TIMEPIECE'}
                   </div>
                   <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-brand transition-colors line-clamp-1">
                     {product.name}

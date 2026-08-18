@@ -41,7 +41,7 @@ export default function CartClient() {
         </div>
 
         {cartItems.length === 0 ? (
-          <div className="text-center py-20 bg-white border border-black/5 flex flex-col items-center">
+          <div className="text-center py-20 bg-surface border border-foreground/10 flex flex-col items-center">
             <p className="text-xl text-foreground/50 mb-6">حقيبة التسوق فارغة</p>
             <Link href="/products" className="btn btn-primary btn-lg rounded-sm">
               متابعة التسوق
@@ -53,7 +53,7 @@ export default function CartClient() {
             {/* Cart Items */}
             <div className="lg:col-span-8 flex flex-col space-y-3 md:space-y-6">
               {cartItems.map((item) => (
-                <div key={item.id} className="flex flex-row items-center p-2.5 md:p-6 bg-white border border-black/5 gap-3 md:gap-6 group hover:shadow-md transition-shadow">
+                <div key={item.id} className="flex flex-row items-center p-2.5 md:p-6 bg-surface border border-foreground/10 gap-3 md:gap-6 group hover:shadow-md transition-shadow">
                   <div className="w-16 h-20 md:w-32 md:h-40 bg-surface-alt shrink-0 relative flex items-center justify-center border border-black/5 overflow-hidden">
                     {item.imageUrl ? (
                       <Image 
@@ -64,7 +64,7 @@ export default function CartClient() {
                         sizes="128px"
                       />
                     ) : (
-                      <div className="text-accent/30 text-2xl">متجرنا</div>
+                      <div className="text-accent/30 text-2xl font-mono tracking-widest">SAHHH</div>
                     )}
                   </div>
                   
@@ -104,7 +104,7 @@ export default function CartClient() {
 
             {/* Order Summary */}
             <div className="lg:col-span-4">
-              <div className="bg-white border border-black/5 p-3 md:p-8 sticky top-20 md:top-32 shadow-sm">
+              <div className="bg-surface border border-foreground/10 p-3 md:p-8 sticky top-20 md:top-32 shadow-sm">
                 <h2 className="text-base md:text-2xl font-black text-foreground mb-3 md:mb-6 border-b border-black/5 pb-3">ملخص الطلب</h2>
 
                 {/* Coupon Input */}

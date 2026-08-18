@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TimeTicker from "@/components/TimeTicker";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 
@@ -47,6 +48,7 @@ export default async function Home() {
       
       {/* 1. Store Identity */}
       <Hero data={safeSettings} brandName={store.name} brandNameLatin={store.nameLatin} />
+      <TimeTicker />
       
       {/* Campaign Banner (if any) */}
       {activeCampaign && <CampaignBanner campaign={activeCampaign} />}
