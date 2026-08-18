@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ShoppingBag, CreditCard, Minus, Plus, Sparkles, Heart } from 'lucide-react';
+import { X, ShoppingBag, CreditCard, Minus, Plus, Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from './CartProvider';
