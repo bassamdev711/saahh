@@ -1,11 +1,9 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Minus, Plus, X, ShoppingBag, CreditCard } from 'lucide-react'
 import { useCart } from '@/components/CartProvider'
-import { getImageSizes } from '@/lib/image-utils'
 import { useRouter } from 'next/navigation'
 import { useCartAnimation } from '@/components/CartAnimationProvider'
 import { useToast } from '@/components/ToastProvider'
@@ -151,13 +149,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                   className="relative w-full h-full flex items-center justify-center"
                 >
                   {activeImage ? (
-                    <Image
+                    <img
                       src={activeImage}
                       alt={product.name}
-                      fill
-                      priority
-                      className="object-contain p-8 transition-transform duration-500 group-hover:scale-105"
-                      sizes={getImageSizes('detail')}
+                      loading="eager"
+                      className="h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div className="relative w-28 h-28 rounded-full watch-dial"><span className="absolute inset-4 rounded-full border border-accent/30" /></div>
@@ -183,13 +179,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     }`}
                   >
                     <div className="relative w-full h-full">
-                      <Image
+                      <img
                         src={img}
                         alt={`صورة ${i + 1}`}
-                        fill
                         loading="lazy"
-                        sizes={getImageSizes('thumbnail')}
-                        className="object-cover mix-blend-multiply"
+                        className="h-full w-full object-cover mix-blend-multiply"
                       />
                     </div>
                   </button>
@@ -374,13 +368,10 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               className="relative w-full max-w-5xl h-full flex items-center justify-center cursor-zoom-out"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
+              <img
                 src={activeImage}
                 alt={product.name}
-                fill
-                className="object-contain"
-                sizes="100vw"
-                quality={100}
+                className="h-full w-full object-contain"
                 onClick={() => setLightboxOpen(false)}
               />
             </motion.div>

@@ -1,31 +1,34 @@
-import React from 'react'
 import TestimonialsClient from './TestimonialsClient'
 import prisma from '@/lib/prisma'
 
 export default async function ProductReviews({ productId }: { productId: string }) {
-  const reviews = await prisma.review.findMany({
-    where: { 
-      status: 'APPROVED',
-      productId: productId 
-    },
-    orderBy: { createdAt: 'desc' },
-    take: 20 // Max 20 reviews on product page for now
-  })
+  let reviews: Array<{ id: string; name: string; city: string | null; content: string; rating: number }> = []
 
-  // Format dates for client
-  const serializedReviews = reviews.map(r => ({
-    id: r.id,
-    name: r.name,
-    city: r.city,
-    content: r.content,
-    rating: r.rating
-  }))
+  try {
+    reviews = await prisma.review.findMany({
+      where: {
+        status: 'APPROVED',
+        productId,
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 20,
+      select: {
+        id: true,
+        name: true,
+        city: true,
+        content: true,
+        rating: true,
+      },
+    })
+  } catch (error) {
+    console.error('ORVÉN product reviews query failed:', error)
+  }
 
   return (
-    <TestimonialsClient 
-      reviews={serializedReviews} 
+    <TestimonialsClient
+      reviews={reviews}
       title="مراجعات المنتج"
-      subtitle="ماذا يقول عملاؤنا عن هذا المنتج؟"
+      subtitle="ماذا يقول عملاؤنا عن هذه القطعة؟"
       productId={productId}
     />
   )

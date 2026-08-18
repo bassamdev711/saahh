@@ -1,7 +1,7 @@
-import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import prisma from '@/lib/prisma'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -18,16 +18,20 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
-  const decodedSlug = decodeURIComponent(slug)
-  const [product, store] = await Promise.all([
-    prisma.product.findUnique({ where: { slug: decodedSlug } }),
-    getStoreConfig(),
-  ])
-  if (!product) return {}
-  return {
-    title: `${product.name} | ${store.name}`,
-    description: product.description || `اكتشف ${product.name} من ${store.name}`,
+  try {
+    const { slug } = await params
+    const decodedSlug = decodeURIComponent(slug)
+    const [product, store] = await Promise.all([
+      prisma.product.findUnique({ where: { slug: decodedSlug } }),
+      getStoreConfig(),
+    ])
+    if (!product) return {}
+    return {
+      title: `${product.name} | ${store.name}`,
+      description: product.description || `اكتشف ${product.name} من ${store.name}`,
+    }
+  } catch {
+    return { title: 'تفاصيل الساعة | أورڤِن', description: 'ORVÉN — دار الساعات المعاصرة.' }
   }
 }
 
@@ -40,32 +44,43 @@ export default async function ProductDetailPage({
 
   const { slug } = await params
   const decodedSlug = decodeURIComponent(slug)
-  const product = await prisma.product.findUnique({ 
-    where: { slug: decodedSlug, isActive: true },
-    include: { variants: true }
-  })
+  let product
+  try {
+    product = await prisma.product.findUnique({
+      where: { slug: decodedSlug, isActive: true },
+      include: { variants: true },
+    })
+  } catch (error) {
+    console.error('ORVÉN product detail query failed:', error)
+    notFound()
+  }
   if (!product) notFound()
 
-  // المنتجات المرتبطة — حقول أساسية فقط (لا حاجة للوصف أو المخزون)
-  const related = await prisma.product.findMany({
-    where: {
-      isActive: true,
-      id: { not: product.id },
-      OR: [
-        { gender: product.gender ?? undefined },
-        { category: product.category ?? undefined },
-      ],
-    },
-    take: 4,
-    orderBy: { featured: 'desc' },
-    select: {
-      id: true,
-      slug: true,
-      name: true,
-      price: true,
-      imageUrl: true,
-    },
-  })
+  // المنتجات المرتبطة — الفشل هنا لا يمنع فتح المنتج الأساسي
+  let related: Array<{ id: string; slug: string; name: string; price: unknown; imageUrl: string | null }> = []
+  try {
+    related = await prisma.product.findMany({
+      where: {
+        isActive: true,
+        id: { not: product.id },
+        OR: [
+          ...(product.gender ? [{ gender: product.gender }] : []),
+          ...(product.category ? [{ category: product.category }] : []),
+        ],
+      },
+      take: 4,
+      orderBy: { featured: 'desc' },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        price: true,
+        imageUrl: true,
+      },
+    })
+  } catch (error) {
+    console.error('ORVÉN related products query failed:', error)
+  }
 
   return (
     <main className="min-h-screen bg-surface text-foreground font-sans">
