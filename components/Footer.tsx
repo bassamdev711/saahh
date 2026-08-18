@@ -90,7 +90,7 @@ export default async function Footer({
               <span className="text-2xl font-light text-surface ml-2 tracking-[0.2em]">{storeName}</span>
             </Link>
             <p className="text-sm leading-relaxed text-surface/80 mb-6">
-              نختار منتجاتنا بعناية لنمنحك تجربة واضحة، موثوقة، وتترك أثرًا يستحق التذكر.
+              نختار ساعاتنا بعناية لنمنحك تجربة هادئة، موثوقة، وتفاصيل تستحق أن تعيش معك طويلاً.
             </p>
             <div className="flex gap-4">
               {showInstagram && (
@@ -154,7 +154,7 @@ export default async function Footer({
           <div>
             <h3 className="text-surface font-bold mb-6 tracking-wider text-base">استكشف</h3>
             <ul className="space-y-4">
-              {['المجموعة', 'الأكثر مبيعًا', 'المنتجات الجديدة', 'التصنيفات'].map((item) => (
+              {['الساعات', 'الأكثر طلباً', 'الإصدارات الجديدة', 'التصنيفات'].map((item) => (
                 <li key={item}>
                   <Link href="/products" className="text-sm text-surface/80 hover:text-accent transition-colors">
                     {item}

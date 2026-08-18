@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, Minus, Plus, X, ShoppingBag, CreditCard } from 'lucide-react'
+import { Minus, Plus, X, ShoppingBag, CreditCard } from 'lucide-react'
 import { useCart } from '@/components/CartProvider'
 import { getImageSizes } from '@/lib/image-utils'
 import { useRouter } from 'next/navigation'
@@ -138,7 +138,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             
             {/* Main Image Stage */}
             <div 
-              className="w-full mx-auto aspect-square max-h-[400px] md:max-h-[550px] bg-white relative overflow-hidden border border-black/5 flex items-center justify-center cursor-zoom-in group rounded-lg"
+              className="w-full mx-auto aspect-square max-h-[400px] md:max-h-[550px] bg-[radial-gradient(circle_at_50%_42%,#ffffff,#d9d5ca)] relative overflow-hidden border border-accent/20 flex items-center justify-center cursor-zoom-in group rounded-none"
               onClick={() => setLightboxOpen(true)}
             >
               <AnimatePresence mode="wait">
@@ -156,11 +156,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       alt={product.name}
                       fill
                       priority
-                      className="object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
+                      className="object-contain p-8 transition-transform duration-500 group-hover:scale-105"
                       sizes={getImageSizes('detail')}
                     />
                   ) : (
-                    <Sparkles className="w-12 h-12 text-accent/20" />
+                    <div className="relative w-28 h-28 rounded-full watch-dial"><span className="absolute inset-4 rounded-full border border-accent/30" /></div>
                   )}
                   {hasDiscount && (
                     <div className="absolute top-4 right-4 bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-sm z-10">
@@ -207,7 +207,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             >
               <div className="mb-4">
                 <span className="text-accent font-bold text-[10px] tracking-widest uppercase mb-2 block">
-                  {product.engName || product.brand || 'Featured product'}
+                  {product.engName || product.brand || 'TIMEPIECE / LIMITED'}
                 </span>
                 <h1 className="text-2xl md:text-4xl font-black text-foreground mb-2">{product.name}</h1>
                 <div className="flex items-center gap-3 mt-4">
@@ -231,7 +231,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               {/* Variants Selector */}
               {hasVariants && (
                 <div className="mb-8">
-                  <h3 className="text-sm font-bold text-foreground mb-3">اختر الحجم:</h3>
+                  <h3 className="text-sm font-bold text-foreground mb-3">اختر المقاس:</h3>
                   <div className="flex flex-wrap gap-3">
                     {product.variants!.map((variant) => (
                       <button
@@ -254,22 +254,22 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               )}
 
               {/* Specs Grid (Compact) */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 bg-white p-4 border border-black/5 rounded-lg">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 watch-spec-card p-4 border border-black/5 rounded-none">
                 {!hasVariants && currentSize && (
                   <div className="flex flex-col">
-                    <span className="text-foreground/50 text-[11px] font-bold mb-1">الحجم</span>
+                    <span className="text-foreground/50 text-[11px] font-bold mb-1">المقاس</span>
                     <span className="text-foreground text-sm font-bold" dir="ltr">{currentSize}</span>
                   </div>
                 )}
                 {product.gender && (
                   <div className="flex flex-col">
-                    <span className="text-foreground/50 text-[11px] font-bold mb-1">الجنس</span>
+                    <span className="text-foreground/50 text-[11px] font-bold mb-1">الأسلوب</span>
                     <span className="text-foreground text-sm font-bold">{product.gender}</span>
                   </div>
                 )}
                 {product.category && (
                   <div className="flex flex-col">
-                    <span className="text-foreground/50 text-[11px] font-bold mb-1">التصنيف</span>
+                    <span className="text-foreground/50 text-[11px] font-bold mb-1">الخامة</span>
                     <span className="text-foreground text-sm font-bold">{product.category}</span>
                   </div>
                 )}

@@ -1,15 +1,11 @@
 /*
-  ==========================================================================
-  CENTRAL BRAND IDENTITY — هذا هو المكان الوحيد الذي تحتاج لتعديله
-  ==========================================================================
-
-  إذا أردت تغيير هوية المتجر بالكامل، قم بتغيير هذه القيم الأربع فقط.
-  جميع الأجزاء الأخرى كالتمرير والتدرجات تتكيف تلقائياً.
+  CENTRAL BRAND IDENTITY — Watch atelier theme
+  The storefront keeps one source of truth for its visual language.
 */
 
 :root {
-  --brand-color:      #171512;  /* أسود دافئ */
-  --brand-accent:     #C9A45C;  /* ذهبي شامبين */
-  --brand-surface:    #F8F5EF;  /* عاجي */
-  --brand-foreground: #24211D;  /* بني أسود */
+  --brand-color:      #111417;  /* ink / brushed black */
+  --brand-accent:     #b79a63;  /* muted champagne brass */
+  --brand-surface:    #f4f1ea;  /* warm ivory */
+  --brand-foreground: #252a2c;  /* graphite */
 }

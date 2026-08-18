@@ -15,10 +15,10 @@ export type StoreConfig = {
 }
 
 export const DEFAULT_STORE_CONFIG: StoreConfig = {
-  name: 'متجرك',
-  nameLatin: 'YOUR STORE',
-  tagline: 'منتجات مختارة بعناية، وتجربة تستحق التذكر.',
-  description: 'اكتشف مجموعة مختارة من المنتجات مع تجربة تسوق واضحة وآمنة ومصممة لعلامتك التجارية.',
+  name: 'ساهه',
+  nameLatin: 'SAHHH',
+  tagline: 'ساعات مختارة لمن يقدّر التفاصيل الهادئة.',
+  description: 'اكتشف مجموعة مختارة من الساعات المصممة حول الدقة، الخامة، والحضور الذي يزداد قيمة مع الوقت.',
   logoUrl: null,
   faviconUrl: null,
   ogImageUrl: null,
@@ -41,12 +41,18 @@ type StoreSettingsRecord = {
 }
 
 function normalizeStoreConfig(settings: StoreSettingsRecord | null | undefined): StoreConfig {
+  const legacyIdentity = [settings?.storeName, settings?.storeNameLatin, settings?.storeTagline, settings?.storeDescription]
+    .filter(Boolean)
+    .join(' ')
+    .match(/your store|متجرك|طيف|عطر|عطور|perfume|fragrance/i)
+  const useWatchIdentity = Boolean(legacyIdentity)
+
   return {
     ...DEFAULT_STORE_CONFIG,
-    name: settings?.storeName?.trim() || DEFAULT_STORE_CONFIG.name,
-    nameLatin: settings?.storeNameLatin?.trim() || DEFAULT_STORE_CONFIG.nameLatin,
-    tagline: settings?.storeTagline?.trim() || DEFAULT_STORE_CONFIG.tagline,
-    description: settings?.storeDescription?.trim() || DEFAULT_STORE_CONFIG.description,
+    name: useWatchIdentity ? DEFAULT_STORE_CONFIG.name : (settings?.storeName?.trim() || DEFAULT_STORE_CONFIG.name),
+    nameLatin: useWatchIdentity ? DEFAULT_STORE_CONFIG.nameLatin : (settings?.storeNameLatin?.trim() || DEFAULT_STORE_CONFIG.nameLatin),
+    tagline: useWatchIdentity ? DEFAULT_STORE_CONFIG.tagline : (settings?.storeTagline?.trim() || DEFAULT_STORE_CONFIG.tagline),
+    description: useWatchIdentity ? DEFAULT_STORE_CONFIG.description : (settings?.storeDescription?.trim() || DEFAULT_STORE_CONFIG.description),
     logoUrl: settings?.logoUrl || null,
     faviconUrl: settings?.faviconUrl || null,
     ogImageUrl: settings?.ogImageUrl || null,

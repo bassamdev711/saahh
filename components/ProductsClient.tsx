@@ -120,7 +120,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 60 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="relative w-full md:max-w-5xl max-h-[95dvh] bg-surface md:rounded-2xl overflow-y-auto no-scrollbar shadow-2xl flex flex-col md:flex-row"
+        className="relative w-full md:max-w-5xl max-h-[95dvh] bg-surface md:rounded-none overflow-y-auto no-scrollbar shadow-2xl flex flex-col md:flex-row"
         dir="rtl"
       >
         {/* Close */}
@@ -132,8 +132,8 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
         </button>
 
         {/* Image Side */}
-        <div className="w-full md:w-5/12 flex flex-col gap-3 bg-white p-4 md:p-6 shrink-0">
-          <div className="relative w-full aspect-square bg-white rounded-xl overflow-hidden border border-black/5 flex items-center justify-center">
+        <div className="w-full md:w-5/12 flex flex-col gap-3 bg-[#e6e2d8] p-4 md:p-6 shrink-0">
+          <div className="relative w-full aspect-square bg-[radial-gradient(circle_at_50%_42%,#ffffff,#d9d5ca)] overflow-hidden border border-accent/20 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeImage}
@@ -150,7 +150,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
                     fill
                     priority
                     sizes={getImageSizes('detail')}
-                    className="object-contain p-6 mix-blend-multiply"
+                    className="object-contain p-8"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
@@ -200,7 +200,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
             transition={{ delay: 0.15 }}
           >
             <span className="text-accent font-bold text-[10px] tracking-[0.3em] uppercase mb-2 block">
-              {product.engName || 'Featured product'}
+              {product.engName || 'TIMEPIECE / LIMITED'}
             </span>
             <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3 leading-tight">
               {product.name}
@@ -225,7 +225,7 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
 
             {hasVariants && (
               <div className="mb-6">
-                <h3 className="text-xs font-bold text-foreground/50 uppercase tracking-widest mb-3">اختر الحجم</h3>
+                <h3 className="text-xs font-bold text-foreground/50 uppercase tracking-widest mb-3">اختر المقاس</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.variants.map((v) => (
                     <button
@@ -244,22 +244,22 @@ function DetailModal({ product, onClose }: { product: ProductItem; onClose: () =
               </div>
             )}
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6 bg-white p-4 border border-black/5 rounded-xl">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6 watch-spec-card p-4 border border-black/5 rounded-none">
               {!hasVariants && product.size && (
                 <div className="flex flex-col">
-                  <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-wider mb-1">الحجم</span>
+                  <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-wider mb-1">المقاس</span>
                   <span className="text-foreground text-sm font-bold" dir="ltr">{product.size}</span>
                 </div>
               )}
               {product.gender && (
                 <div className="flex flex-col">
-                  <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-wider mb-1">الجنس</span>
+                  <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-wider mb-1">الأسلوب</span>
                   <span className="text-foreground text-sm font-bold">{product.gender}</span>
                 </div>
               )}
               {product.color && (
                 <div className="flex flex-col">
-                  <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-wider mb-1">الفئة</span>
+                  <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-wider mb-1">الخامة</span>
                   <span className="text-foreground text-sm font-bold">{product.color}</span>
                 </div>
               )}
@@ -420,9 +420,9 @@ export default function ProductsClient({
                 <motion.div
                   key={`mobile-${product.id}`}
                   onClick={() => setSelectedId(product.id)}
-                  className="relative min-w-[58vw] h-[290px] snap-center bg-white shadow-md hover:shadow-xl border border-black/20 rounded-2xl overflow-hidden flex flex-col cursor-pointer group"
+                  className="relative min-w-[58vw] h-[290px] snap-center bg-[#e9e5dc] shadow-md hover:shadow-xl border border-foreground/10 rounded-none overflow-hidden flex flex-col cursor-pointer group"
                 >
-                  <div className="relative w-full h-[58%] bg-surface/50 p-4 flex items-center justify-center">
+                  <div className="relative w-full h-[58%] bg-[radial-gradient(circle_at_50%_42%,#ffffff,#d9d5ca)] p-4 flex items-center justify-center">
                     <button 
                       className={`absolute top-4 right-4 z-20 transition-transform hover:scale-110 active:scale-95 drop-shadow-md ${
                         isFavorite(product.id) ? 'text-red-500' : 'text-white hover:text-red-500'
@@ -458,13 +458,13 @@ export default function ProductsClient({
                         priority={index === 0}
                         loading={index === 0 ? undefined : 'lazy'}
                         sizes={getImageSizes('card-mobile')}
-                        className="object-contain p-6 mix-blend-multiply"
+                        className="object-contain p-8"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-accent/30 text-4xl">متجرنا</div>
                     )}
                   </div>
-                  <div className="flex-1 flex flex-col items-center justify-center p-3 text-center bg-white z-10 border-t border-black/10">
+                  <div className="flex-1 flex flex-col items-center justify-center p-3 text-center bg-surface z-10 border-t border-black/10">
                     <h3 className="text-base font-black text-foreground mb-0.5">{product.name}</h3>
                     <p className="text-accent text-[9px] tracking-widest uppercase mb-1.5">{product.engName}</p>
                     <div className="flex items-center gap-1.5 mb-2">
@@ -489,10 +489,10 @@ export default function ProductsClient({
                 <motion.div
                   key={`desktop-${product.id}`}
                   onClick={() => setSelectedId(product.id)}
-                  className="relative h-[550px] bg-white cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-500 border border-black/20 hover:border-brand/40 rounded-3xl flex flex-col overflow-hidden"
+                  className="relative h-[550px] bg-[#e9e5dc] cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-500 border border-foreground/10 hover:border-brand/40 rounded-none flex flex-col overflow-hidden"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="relative w-full h-[65%] bg-surface/50 transition-colors duration-500 group-hover:bg-surface-alt flex items-center justify-center p-8">
+                  <div className="relative w-full h-[65%] bg-[radial-gradient(circle_at_50%_42%,#ffffff,#d9d5ca)] transition-colors duration-500 group-hover:bg-[#ded9cc] flex items-center justify-center p-8">
                     <button 
                       className={`absolute top-4 right-4 z-20 transition-all duration-300 drop-shadow-md hover:scale-110 active:scale-95 ${
                         isFavorite(product.id) ? 'text-red-500 opacity-100' : 'text-white hover:text-red-500 opacity-0 group-hover:opacity-100'
@@ -541,7 +541,7 @@ export default function ProductsClient({
                       </div>
                     )}
                   </div>
-                  <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-white z-10 border-t border-black/10">
+                  <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-surface z-10 border-t border-black/10">
                     <h3 className="text-2xl font-black text-foreground mb-2">{product.name}</h3>
                     <p className="text-accent text-xs tracking-[0.2em] uppercase">{product.engName}</p>
                     <div className="flex items-center gap-2 my-4">

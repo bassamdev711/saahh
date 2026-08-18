@@ -60,21 +60,21 @@ export default async function Home() {
       {/* 4. Bestsellers */}
       <ProductsServer 
         type="bestsellers" 
-        title="الأكثر مبيعاً" 
-        subtitle="اختيارات عملائنا المفضلة" 
+        title="الساعات الأكثر طلباً"
+        subtitle="اختيارات صُنعت للحضور اليومي"
       />
       
       {/* 5. Offers */}
       <ProductsServer 
         type="offers" 
-        title="عروض حصرية" 
-        subtitle="فرصتك لاقتناء الفخامة" 
+        title="إصدارات محدودة"
+        subtitle="تفاصيل نادرة، بعدد محدود"
       />
       
       {/* 6. Handpicked / Featured */}
       <ProductsServer 
         type="featured" 
-        title="منتجات مختارة" 
+        title="مختارات دار الوقت"
         subtitle={`ترشيحات فريق ${store.name}`}
       />
       

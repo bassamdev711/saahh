@@ -22,15 +22,16 @@
   --color-surface-alt:       color-mix(in srgb, var(--brand-surface) 95%, black);
   --color-foreground-dark:   color-mix(in srgb, var(--brand-foreground) 40%, black);
 
-  /* ── خاص بالرسومات / الزجاجة ── */
-  --color-bottle-brand-start: color-mix(in srgb, var(--brand-color) 65%, black);
-  --color-bottle-brand-end:   color-mix(in srgb, var(--brand-color) 30%, black);
-  --color-bottle-cap-light:   color-mix(in srgb, var(--brand-accent) 85%, white);
-  --color-bottle-cap-dark:    color-mix(in srgb, var(--brand-accent) 60%, black);
+  /* ── Watch atelier surfaces ── */
+  --color-watch-ink:          #0c1012;
+  --color-watch-steel:        #8d9797;
+  --color-watch-brass:        var(--brand-accent);
+  --color-watch-line:         color-mix(in srgb, var(--brand-accent) 42%, transparent);
 
   /* ── خطوط وحركات ── */
   --font-sans: var(--font-tajawal), Arial, sans-serif;
-  --font-mono: monospace;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --animate-marquee: marquee 20s linear infinite;
 
   @keyframes marquee {
@@ -64,10 +65,66 @@ body.is-admin {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, var(--color-brand), var(--color-accent));
+  background: linear-gradient(110deg, var(--color-foreground), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.font-display { font-family: var(--font-display); }
+
+.watch-grid {
+  background-image: linear-gradient(var(--color-watch-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-watch-line) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+}
+
+.watch-dial {
+  background:
+    radial-gradient(circle at 42% 36%, rgba(255,255,255,.16), transparent 18%),
+    radial-gradient(circle, #273033 0 52%, #b79a63 52.6% 53.4%, #111417 54% 64%, #b79a63 64.8% 65.4%, #0a0d0f 66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.16), 0 32px 70px rgba(0,0,0,.32);
+}
+
+.watch-dial::before {
+  content: '';
+  position: absolute;
+  inset: 9%;
+  border: 1px solid rgba(236, 218, 177, .45);
+  border-radius: 999px;
+  background: repeating-conic-gradient(from 0deg, rgba(255,255,255,.7) 0deg 1deg, transparent 1deg 30deg);
+  mask-image: radial-gradient(circle, transparent 0 66%, black 67% 100%);
+}
+
+.watch-hand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0 50%;
+  background: #f4f1ea;
+  border-radius: 999px;
+}
+
+.watch-hand::after {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: var(--color-watch-brass);
+  border: 3px solid #111417;
+}
+
+.watch-spec-card {
+  background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(232,229,220,.72));
+  border: 1px solid rgba(17,20,23,.12);
+}
+
+.metallic-line {
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
 }
 
 .hover-glow:hover {

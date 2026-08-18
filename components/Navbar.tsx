@@ -58,10 +58,10 @@ export default function Navbar({
 
   const navLinks = [
     { name: "الرئيسية", href: "/" },
-    { name: "المجموعة", href: "/products" },
+    { name: "الساعات", href: "/products" },
     { name: "من نحن", href: "/#about" },
-    { name: `تجربة ${storeName}`, href: "/#experience" },
-    { name: "تواصل معنا", href: "/#contact" },
+    { name: "منهجنا", href: "/#experience" },
+    { name: "تواصل", href: "/#contact" },
   ];
 
   return (
