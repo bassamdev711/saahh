@@ -1,108 +1,174 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
-const perfumeImages = [
-  'https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1590736704728-f4730bb30770?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1594032194509-0056023973b2?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1615397323863-1284d7b27fc5?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1582211594533-25b73c890f07?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1512496015851-a1cbfacabfb4?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1583445013765-46c20c4a6772?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1595425970377-c9703bc48baf?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1557170334-a9632e77c6e4?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1589132549241-155e9ba423f8?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1608528577891-eb055944f2e7?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1615529182559-0785f8abf66c?q=80&w=800&auto=format&fit=crop',
-];
+const watchImages = [
+  'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1518544801976-3e18e8e6f36c?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1551816230-ef5deaed4a26?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1609587312208-cea54be969e7?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1594534475808-b18fc33b045e?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1585123334904-845d60e5d8f9?auto=format&fit=crop&w=1200&q=85',
+  'https://images.unsplash.com/photo-1533055640609-24b498cdfd55?auto=format&fit=crop&w=1200&q=85',
+]
+
+const categories = [
+  { name: 'الأتولييه', slug: 'atelier', prefix: 'Atelier', desc: 'ساعات كلاسيكية هادئة، صيغت لتعيش أبعد من الموسم.' },
+  { name: 'نُكتورن', slug: 'nocturne', prefix: 'Nocturne', desc: 'أقراص داكنة وحضور ليلي لمن يفضل التفاصيل العميقة.' },
+  { name: 'ميريديان', slug: 'meridian', prefix: 'Meridian', desc: 'ساعات سفر دقيقة تجمع بين قراءة الوقت وأناقة الحركة.' },
+  { name: 'فورم', slug: 'forme', prefix: 'Forme', desc: 'بساطة معمارية، خطوط صافية، ونسب محسوبة على المعصم.' },
+  { name: 'كرونوغراف', slug: 'chronograph', prefix: 'Chronograph', desc: 'تعقيد رياضي متزن لمحبي القياس والحركة الدقيقة.' },
+  { name: 'هيريتج', slug: 'heritage', prefix: 'Heritage', desc: 'إشارات إلى ساعات الماضي بصياغة معاصرة ومواد صادقة.' },
+  { name: 'مارين', slug: 'marine', prefix: 'Marine', desc: 'أداء يومي متين، جاهز للماء والرحلات الطويلة.' },
+  { name: 'سكليتون', slug: 'skeleton', prefix: 'Skeleton', desc: 'حركة مكشوفة تكشف جمال الميكانيكا خلف القرص.' },
+  { name: 'أوبسيديان', slug: 'obsidian', prefix: 'Obsidian', desc: 'قطع سوداء جريئة، تنتمي إلى الضوء المنخفض والمناسبات الخاصة.' },
+  { name: 'إديشنز', slug: 'editions', prefix: 'Editions', desc: 'إصدارات محدودة مرقمة، صممت لهواة القطع النادرة.' },
+]
+
+const nameNotes = ['سكون', 'مدى', 'أفق', 'نبض', 'ظل', 'مسار', 'مدار', 'خط', 'نقطة', 'لحظة']
+const sizes = ['36 MM', '38 MM', '40 MM', '41 MM', '42 MM']
+const genders = ['للجنسين', 'رجالي', 'للجنسين', 'نسائي']
+const materials = ['316L Stainless Steel', 'Brushed Steel', 'Polished Steel', 'Titanium Grade 2', 'Black PVD Steel']
+const movements = ['Automatic', 'Automatic', 'Quartz Swiss', 'Automatic', 'Manual Wind']
+const legacyDemoSlugs = [
+  'summer-perfumes', 'winter-perfumes', 'french-perfumes', 'oud-oil', 'musk-amber',
+  'niche-perfumes', 'gift-sets', 'hair-mists', 'home-fragrances', 'limited-editions',
+]
+
+function imageUrl(index) {
+  return watchImages[index % watchImages.length]
+}
+
+function productData(category, categoryIndex, productIndex, collectionId) {
+  const serial = String(productIndex + 1).padStart(2, '0')
+  const price = 285 + (categoryIndex * 55) + (productIndex * 32)
+  const compareAtPrice = productIndex % 4 === 0 ? price + 85 : null
+  const firstImage = imageUrl(categoryIndex * 2 + productIndex)
+  const secondImage = imageUrl(categoryIndex * 2 + productIndex + 10)
+  const material = materials[(categoryIndex + productIndex) % materials.length]
+  const movement = movements[(categoryIndex + productIndex) % movements.length]
+  const size = sizes[(categoryIndex + productIndex) % sizes.length]
+  const note = nameNotes[(categoryIndex + productIndex) % nameNotes.length]
+
+  return {
+    name: `${category.prefix} ${serial} / ${note}`,
+    slug: `orven-${category.slug}-${serial}`,
+    brand: 'ORVÉN',
+    description: `${category.name} من ORVÉN؛ ساعة ${movement.toLowerCase()} بعلبة ${material.toLowerCase()} ومقاس ${size}. قطعة مصممة لحضور هادئ وتفاصيل تبقى واضحة مع الوقت.`,
+    price,
+    compareAtPrice,
+    sku: `ORV-${String(categoryIndex + 1).padStart(2, '0')}-${serial}`,
+    size,
+    gender: genders[(categoryIndex + productIndex) % genders.length],
+    category: category.name,
+    collectionId,
+    stock: 8 + ((categoryIndex * 7 + productIndex * 3) % 43),
+    featured: productIndex < 2,
+    bestseller: productIndex === 0 || (categoryIndex === 1 && productIndex === 1),
+    isActive: true,
+    imageUrl: firstImage,
+    images: [firstImage, secondImage],
+    seoSearchPhrases: [
+      `${category.name} ORVÉN`,
+      `ساعة ${category.name}`,
+      `${material} watch`,
+    ],
+  }
+}
+
+async function removeLegacyDemoData() {
+  if (process.env.CLEAN_LEGACY_DEMO !== 'true') return
+
+  const legacyCollections = await prisma.collection.findMany({
+    where: { slug: { in: legacyDemoSlugs } },
+    select: { id: true },
+  })
+  const legacyIds = legacyCollections.map((item) => item.id)
+
+  if (legacyIds.length) {
+    await prisma.product.updateMany({ where: { collectionId: { in: legacyIds } }, data: { collectionId: null } })
+    await prisma.product.deleteMany({ where: { collectionId: null, slug: { contains: '-product-' } } })
+    await prisma.collection.deleteMany({ where: { id: { in: legacyIds } } })
+    console.log(`Removed ${legacyIds.length} legacy demo collections.`)
+  }
+}
 
 async function main() {
-  const categories = [
-    { name: 'عطور صيفية', slug: 'summer-perfumes', desc: 'مجموعة منعشة تناسب أجواء الصيف الحارة' },
-    { name: 'عطور شتوية', slug: 'winter-perfumes', desc: 'عطور دافئة ومميزة تمنحك الدفء في ليالي الشتاء' },
-    { name: 'عطور فرنسية', slug: 'french-perfumes', desc: 'الأناقة الفرنسية في زجاجة عطر' },
-    { name: 'دهن العود', slug: 'oud-oil', desc: 'أصالة العود الشرقي الفاخر' },
-    { name: 'مسك وعنبر', slug: 'musk-amber', desc: 'مزيج ساحر من المسك والعنبر الصافي' },
-    { name: 'عطور النيش', slug: 'niche-perfumes', desc: 'عطور حصرية ونادرة لأصحاب الذوق الرفيع' },
-    { name: 'مجموعات الهدايا', slug: 'gift-sets', desc: 'أرقى الهدايا لمن تحب' },
-    { name: 'عطور الشعر', slug: 'hair-mists', desc: 'عطور لطيفة ومخصصة للشعر' },
-    { name: 'عطور المنزل', slug: 'home-fragrances', desc: 'لجعل منزلك يفوح بأجمل الروائح' },
-    { name: 'إصدارات محدودة', slug: 'limited-editions', desc: 'إصدارات حصرية متوفرة لفترة محدودة' },
-  ];
+  console.log('Seeding ORVÉN demo catalog: 10 categories × 10 watches = 100 products')
 
-  console.log('Updating 10 categories and 100 products with diverse images...');
+  await prisma.storeSettings.upsert({
+    where: { id: 'singleton' },
+    update: { storeName: 'أورڤِن', storeNameLatin: 'ORVÉN', storeTagline: 'الوقت، بصيغة أندر.', storeDescription: 'دار ساعات معاصرة تصنع قطعًا نادرة، تجمع بين دقة الحركة وهدوء الحضور.' },
+    create: {
+      id: 'singleton',
+      storeName: 'أورڤِن',
+      storeNameLatin: 'ORVÉN',
+      storeTagline: 'الوقت، بصيغة أندر.',
+      storeDescription: 'دار ساعات معاصرة تصنع قطعًا نادرة، تجمع بين دقة الحركة وهدوء الحضور.',
+      locale: 'ar',
+      currencyCode: process.env.STORE_CURRENCY?.trim().toUpperCase() || 'USD',
+      storeUrl: process.env.STORE_URL?.trim() || null,
+      seoSearchPhrases: ['ORVÉN', 'أورڤِن', 'ساعات فاخرة', 'ساعات أوتوماتيك'],
+    },
+  })
 
-  for (let i = 0; i < categories.length; i++) {
-    const cat = categories[i];
-    
-    // Pick a random image for the category
-    const catImage = perfumeImages[Math.floor(Math.random() * perfumeImages.length)];
-    
-    // Create or update collection
+  await removeLegacyDemoData()
+
+  let productCount = 0
+  for (let categoryIndex = 0; categoryIndex < categories.length; categoryIndex += 1) {
+    const category = categories[categoryIndex]
     const collection = await prisma.collection.upsert({
-      where: { slug: cat.slug },
-      update: { imageUrl: catImage },
-      create: {
-        name: cat.name,
-        slug: cat.slug,
-        description: cat.desc,
-        imageUrl: catImage,
+      where: { slug: category.slug },
+      update: {
+        name: category.name,
+        description: category.desc,
+        imageUrl: imageUrl(categoryIndex),
         isActive: true,
+        seoSearchPhrases: [category.name, `${category.prefix} watches`, 'ORVÉN'],
       },
-    });
+      create: {
+        name: category.name,
+        slug: category.slug,
+        description: category.desc,
+        imageUrl: imageUrl(categoryIndex),
+        isActive: true,
+        seoSearchPhrases: [category.name, `${category.prefix} watches`, 'ORVÉN'],
+      },
+    })
 
-    console.log(`Updated category: ${collection.name}`);
-
-    // Create or update 10 products for this category
-    for (let j = 1; j <= 10; j++) {
-      const productSlug = `${cat.slug}-product-${j}`;
-      const productName = `${cat.name} - عطر تجريبي ${j}`;
-      const price = 150 + Math.floor(Math.random() * 500); 
-      
-      const productImage1 = perfumeImages[Math.floor(Math.random() * perfumeImages.length)];
-      const productImage2 = perfumeImages[Math.floor(Math.random() * perfumeImages.length)];
-
+    for (let productIndex = 0; productIndex < 10; productIndex += 1) {
+      const product = productData(category, categoryIndex, productIndex, collection.id)
       await prisma.product.upsert({
-        where: { slug: productSlug },
-        update: {
-          imageUrl: productImage1,
-          images: [productImage1, productImage2],
-        },
-        create: {
-          name: productName,
-          slug: productSlug,
-          description: `هذا وصف تجريبي للعطر ${productName} مخصص للعرض فقط.`,
-          price: price,
-          compareAtPrice: Math.random() > 0.5 ? price + 100 : null,
-          category: collection.name,
-          collectionId: collection.id,
-          imageUrl: productImage1,
-          images: [productImage1, productImage2],
-          stock: 50,
-          isActive: true,
-          gender: Math.random() > 0.5 ? 'للجنسين' : (Math.random() > 0.5 ? 'رجالي' : 'نسائي'),
-          featured: Math.random() > 0.8,
-          bestseller: Math.random() > 0.8,
-        },
-      });
+        where: { slug: product.slug },
+        update: product,
+        create: product,
+      })
+      productCount += 1
     }
+    console.log(`✓ ${category.name}: 10 watches`)
   }
 
-  console.log('✅ Demo data updated successfully with diverse images!');
+  console.log(`✓ ORVÉN catalog ready: ${categories.length} categories, ${productCount} products`)
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
+  .catch((error) => {
+    console.error(error)
+    process.exitCode = 1
   })
   .finally(async () => {
-    await prisma.$disconnect();
-  });
+    await prisma.$disconnect()
+  })
