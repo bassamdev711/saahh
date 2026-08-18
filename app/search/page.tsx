@@ -102,7 +102,7 @@ export default async function SearchPage({
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-accent text-2xl font-mono tracking-widest">SAHHH</span>
+                      <span className="text-accent text-2xl font-mono tracking-widest">ATHAR</span>
                     </div>
                   )}
                 </div>

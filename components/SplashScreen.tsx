@@ -9,8 +9,8 @@ interface SplashScreenProps {
 }
 
 export default function SplashScreen({
-  storeName = 'متجرك',
-  storeNameLatin = 'YOUR STORE',
+  storeName = 'أثر',
+  storeNameLatin = 'ATHAR',
 }: SplashScreenProps) {
   const [showSplash, setShowSplash] = useState(false)
 

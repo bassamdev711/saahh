@@ -461,7 +461,7 @@ export default function ProductsClient({
                         className="object-contain p-8"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-accent/30 text-4xl font-mono tracking-widest">SAHHH</div>
+                      <div className="w-full h-full flex items-center justify-center text-accent/30 text-4xl font-mono tracking-widest">ATHAR</div>
                     )}
                   </div>
                   <div className="flex-1 flex flex-col items-center justify-center p-3 text-center bg-surface z-10 border-t border-black/10">
@@ -532,7 +532,7 @@ export default function ProductsClient({
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-accent/20 text-6xl group-hover:text-accent/40 transition-colors">
-                        SAHHH / TIMEPIECE
+                        ATHAR / TIMEPIECE
                       </div>
                     )}
                     {product.compareAtPrice && (

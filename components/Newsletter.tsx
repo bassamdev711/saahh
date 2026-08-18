@@ -6,7 +6,7 @@ import { Mail } from "lucide-react";
 import { useToast } from "@/components/ToastProvider";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
 
-export default function Newsletter({ storeName = 'متجرك' }: { storeName?: string }) {
+export default function Newsletter({ storeName = 'أثر' }: { storeName?: string }) {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { showToast } = useToast();

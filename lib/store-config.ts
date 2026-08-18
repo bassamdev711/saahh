@@ -15,10 +15,10 @@ export type StoreConfig = {
 }
 
 export const DEFAULT_STORE_CONFIG: StoreConfig = {
-  name: 'ساهه',
-  nameLatin: 'SAHHH',
-  tagline: 'ساعات مختارة لمن يقدّر التفاصيل الهادئة.',
-  description: 'اكتشف مجموعة مختارة من الساعات المصممة حول الدقة، الخامة، والحضور الذي يزداد قيمة مع الوقت.',
+  name: 'أثر',
+  nameLatin: 'ATHAR',
+  tagline: 'أثرٌ يتركه الوقت.',
+  description: 'دار ساعات معاصرة تصنع قطعًا تحفظ اللحظات، وتمنح الوقت شكلًا يستحق أن يُرى.',
   logoUrl: null,
   faviconUrl: null,
   ogImageUrl: null,
@@ -44,7 +44,7 @@ function normalizeStoreConfig(settings: StoreSettingsRecord | null | undefined):
   const legacyIdentity = [settings?.storeName, settings?.storeNameLatin, settings?.storeTagline, settings?.storeDescription]
     .filter(Boolean)
     .join(' ')
-    .match(/your store|متجرك|طيف|عطر|عطور|perfume|fragrance/i)
+    .match(/your store|متجرك|طيف|ساهه|SAHHH|عطر|عطور|perfume|fragrance/i)
   const useWatchIdentity = Boolean(legacyIdentity)
 
   return {

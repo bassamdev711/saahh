@@ -13,7 +13,7 @@ type CollectionCard = {
 
 export const revalidate = 3600
 
-export default async function CollectionsSection({ brandName = 'ساهه' }: { brandName?: string }) {
+export default async function CollectionsSection({ brandName = 'أثر' }: { brandName?: string }) {
   let collections: CollectionCard[] = []
   try {
     collections = await prisma.collection.findMany({ where: { isActive: true }, orderBy: { createdAt: 'desc' }, take: 4 })

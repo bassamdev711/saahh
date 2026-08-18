@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TimeTicker from "@/components/TimeTicker";
+import ArtInterlude from "@/components/ArtInterlude";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 
@@ -58,26 +59,26 @@ export default async function Home() {
       
       {/* 3. Categories (Collections) */}
       <CollectionsSection brandName={store.name} />
-      
+      <ArtInterlude />
       {/* 4. Bestsellers */}
       <ProductsServer 
         type="bestsellers" 
-        title="الساعات الأكثر طلباً"
-        subtitle="اختيارات صُنعت للحضور اليومي"
+        title="قطعٌ تُرى قبل أن تُرتدى"
+        subtitle="الفصل الأول / حضور يومي"
       />
       
       {/* 5. Offers */}
       <ProductsServer 
         type="offers" 
-        title="إصدارات محدودة"
-        subtitle="تفاصيل نادرة، بعدد محدود"
+        title="أعمال نادرة"
+        subtitle="الفصل الثاني / قطع محدودة"
       />
       
       {/* 6. Handpicked / Featured */}
       <ProductsServer 
         type="featured" 
-        title="مختارات دار الوقت"
-        subtitle={`ترشيحات فريق ${store.name}`}
+        title="أثرٌ شخصي"
+        subtitle={`الفصل الثالث / مختارات ${store.name}`}
       />
       
       {/* 7. Why trust us */}
