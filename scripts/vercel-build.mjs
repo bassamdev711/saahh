@@ -22,6 +22,8 @@ if (process.env.DATABASE_URL && process.env.AUTO_SYNC_DATABASE !== 'false') {
   } else {
     console.log('\nSkipping ORVÉN demo catalog because SEED_DEMO_DATA is not true')
   }
+
+  run('node', ['scripts/normalize-orven-content.mjs'])
 } else {
   console.warn('\nSkipping database sync and demo seed because DATABASE_URL is not available or AUTO_SYNC_DATABASE=false')
 }

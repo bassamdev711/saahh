@@ -311,7 +311,7 @@ model Review {
 model HomepageSettings {
   id                  String   @id @default("singleton")
   // Hero Section
-  heroTitle           String   @default("متجرك")
+  heroTitle           String   @default("ORVÉN")
   heroSubtitle        String   @default("حضورٌ لا يُنسى.")
   heroDescription     String   @default("اكتشف مجموعتنا المختارة بعناية، المصممة لتمنحك تجربة تسوق واضحة وفريدة.")
   heroPrimaryButton   String   @default("اكتشف المنتجات")

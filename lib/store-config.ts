@@ -44,7 +44,7 @@ function normalizeStoreConfig(settings: StoreSettingsRecord | null | undefined):
   const legacyIdentity = [settings?.storeName, settings?.storeNameLatin, settings?.storeTagline, settings?.storeDescription]
     .filter(Boolean)
     .join(' ')
-    .match(/your store|متجرك|طيف|ساهه|SAHHH|أثر|ATHAR|عطر|عطور|perfume|fragrance/i)
+    .match(/your store|طيف|ساهه|SAHHH|أثر|ATHAR|عطر|عطور|perfume|fragrance/i)
   const useWatchIdentity = Boolean(legacyIdentity)
 
   return {
